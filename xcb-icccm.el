@@ -130,8 +130,8 @@ according to BYTE-ARRAY.
 This method automatically format the value as 8, 16 or 32 bits array."
   (let ((retval (cl-call-next-method obj byte-array))
         tmp)
-    (with-slots (~lsb length format value-len value) obj
-      (if (or (= 0 value-len) (= 0 length))
+    (with-slots (~lsb (len length) format value-len value) obj
+      (if (or (= 0 value-len) (= 0 len))
           (setf value nil)              ;no available value
         (setq tmp value                 ;long-offset is always 0
               value nil)
